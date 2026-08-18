@@ -68,3 +68,27 @@ output: [{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}]
 
 command:curl -X GET http://localhost:5000/title/the%20divine%20comedy
 output: [{"author":"Dante Alighieri","title":"The Divine Comedy","reviews":{}}]
+
+#Task 5:getbookreview
+
+command: curl -X GET http://localhost:5000/review/3
+output: {}
+
+#Task 6: register
+command: curl -X POST http://localhost:5000/register -H "Content-Type: application/json" -d "{\"username\":\"user1\",\"password\":\"pass1\"}"
+output: {"message":"User successfully registered. Now you can login"}
+output(if username already exists ) : {"message":"User already exists!"}
+output(if username or password are not available) : {"message":"Unable to register user."} 
+
+#Task 7: login
+command: curl -X POST http://localhost:5000/customer/login -H "Cont
+ent-Type: application/json" -d "{\"username\":\"user1\",\"password\":\"pass1\"}"
+output: User successfully logged in
+
+#Task 8: reviewadded
+command: curl -X PUT "http://localhost:5000/customer/auth/review/1?review=This%20book%20is%20great" -b cookies.txt
+output: {"message":"The review for the book with ISBN 1 has been updated.","reviews":{"user1":"This book is great"}}
+
+#Task 9: deletereview
+command: curl -X DELETE http://localhost:5000/customer/auth/review/1 -b cookies.txt
+output: {"message":"Reviews for the ISBN 1 posted by the user user1 deleted."}
