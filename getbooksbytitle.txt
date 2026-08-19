@@ -1,0 +1,2 @@
+command: curl -X GET http://localhost:5000/title/the%20divine%20comedy
+output: [{"author":"Dante Alighieri","title":"The Divine Comedy","reviews":{}}]
